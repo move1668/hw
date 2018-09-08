@@ -85,7 +85,6 @@ function employers(num) {
 var res = employers(4);
 console.log(res);
 
-
 console.log(mainList);
 
 
