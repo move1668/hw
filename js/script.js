@@ -1,28 +1,101 @@
+let money,
+	name,
+	time,
+	price;
 
+function start() {
+	money = prompt("Ваш бюджет?");
 
-// var theShop = prompt('Are your shop?', 'Your answer.');
-// var nameShop = prompt('What is the name of your shop?', 'Your answer.');
+	while (isNaN(money) || money == "" || money == null) {
+		money = prompt("Ваш бюджет?");
+	}
 
-// var shopGoods = [];
-// shopGoods[0] = prompt('What is be sell?', 'Product.');
-// shopGoods[1] = prompt('What is be sell?', 'Product.');
-// shopGoods[2] = prompt('What is be sell?', 'Product.');
-
-var mainList = {
-	budget: 210120,
-	// nameShop: nameShop,
-	// shopGoods: shopGoods,
-	employers: {
-		programmer: 'John',
-		webDeziner: 'Luci'
-	},
-	open: true
+	name = prompt("Название Вашего магазина?").toUpperCase();
+	time = 21;
+	price = 100;
 }
 
-console.log(mainList.budget / 12 / 30);
+start();
 
-// console.log(mainList.budget);
-// console.log(mainList.nameShop);
-// console.log(mainList.shopGoods);
-// console.log(mainList.employers);
-// console.log(mainList.open);
+let mainList = {
+	budget: money,
+	shopName: name,
+	shopGoods: {},
+	employers: {},
+	open: false,
+	discountStatus: true
+}
+
+function chooseGoods() {
+	for (let i = 0; i < 5; i++) {
+		let a = prompt("Какой тип товаров будем продавать?");
+
+		if ((typeof(a) === 'string' && (typeof(a)) != null && a != '')) {
+			console.log('Всё верно');
+			mainList.shopGoods[i] = a;
+		} else {
+			i = i - 1;
+		}
+	}
+}
+
+// chooseGoods();
+
+function workTime(time) {
+	if (time < 0) {
+		consile.log('Такого быть не может!');
+		} else if (time > 8 && time < 20) {
+			console.log("Времф поработать");
+			} else if (time < 24) {
+				console.log('Уже слишком поздно!');
+				} else {
+					console.log('В сутках только 24 часа!');
+					}
+}
+
+// console.log(workTime(18));
+
+function dayBudget(money) {
+	return money / 30;
+}
+
+// console.log(dayBudget(mainList.budget));
+
+function discount(status, price, sale) {
+	if (status === true) {
+		var newPrice = price * sale / 100;
+		return newPrice; 
+	} else {
+		return price;
+	}
+}
+
+// console.log(discount(mainList.discountStatus, price, 80));
+
+function employers(num) {
+	var employers = [];
+	for (var i = 0; i < num; i++) {
+		name = prompt('Введите Ваше имя', '');
+		tel = prompt('Введите Ваш номер телефона', '');
+		employers[i] = [tel, name];
+	}
+	return employers;
+}
+
+var res = employers(4);
+console.log(res);
+
+
+console.log(mainList);
+
+
+
+
+
+
+
+
+
+
+
+
